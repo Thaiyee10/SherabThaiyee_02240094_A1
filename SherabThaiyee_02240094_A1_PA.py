@@ -1,2 +1,1 @@
-print ("hello world")
-print (1)
+print ("02240094_SherabThaiyee_A1")
