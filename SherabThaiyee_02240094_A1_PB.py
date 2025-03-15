@@ -2,38 +2,37 @@ import random
 
 # 1. Guess the Number Game
 def guess_the_number():
-    '''Plays a number guessing game.'''
-    Max = int(input("Enter the upper limit of the range: "))
-    Min = int(input("Enter the lower limit of the range: "))
-    secret_num = random.randint(Min, Max)
+
+    Max = int(input("please put the highest limit of the range: "))
+    Min = int(input("please put the lowest limit of the range: "))
+    secret_number = random.randint(Min, Max)
     attempts = 0
 
-    print(f"I'm thinking of a number between {Min} and {Max}. Try to guess it!")
+    print(f"i will guess a number between {Min} and {Max}. if you are genius try a luck!")
 
     while True:
         try:
-            guess_num = int(input("Enter your number: "))
+            number_guess = int(input("guess a number: "))
             attempts += 1
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("your input is invalid. please try to guess a number.")
             continue
 
-        if guess_num < secret_num:
-            print("your guess is too low! Try again")
+        if number_guess < secret_number:
+            print("your guess is TOO HIGH!Try one more time ")
 
-        elif   guess_num > secret_num:
-            print("your guess is too high! Try again.")
+        elif   number_guess > secret_number:
+            print("your guess is TOO HIGH! Try one more time")
         else:
-            print(f"Congratulations! You guessed the number {secret_num} in {attempts} attempts.")
+            print(f"hurrah! You guessed the right number {secret_number} after {attempts} attempts.")
             break
 
 # 2. Rock Paper Scissors Game
 def rock_paper_scissors():
-    '''Plays a text-based rock-paper-scissors game.'''
     options = ["paper", "rock", "scissors"]
 
     while True:
-        your_choice = input("Enter your choice (rock, paper, or scissors), or 'q' to quit: ").lower()
+        your_choice = input("Enter your choice (scissors,rock, or paper), or 'q' to quit: ").lower()
 
         if your_choice == 'q':
             print("Thank you !")
@@ -79,9 +78,9 @@ while True:
     else:
         print("Invalid choice. Please enter 1, 2, or 3.")
 
-    user_choice = input("Do you want to play another game yes / no: ")
+    user_choice = input(  "if you wish to play another game yes/no :")
     if user_choice != 'yes':
-        print("Thank you for Playing" )
+        print("EXIT" )
         break
 
 

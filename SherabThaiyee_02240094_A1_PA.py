@@ -11,23 +11,12 @@ def is_prime(n):
             return False
     return True
 
-
-    """Checks if a number is prime.
-        n: The number to check.
-        True if the number is prime, False otherwise."""
-    
 def prime_sum(start, end):
-    
-    if not isinstance(start, int) or not isinstance(end, int) :
-        return "Invalid Input. Start and end must be integers"
-    if start > end :
-        return "Invalid Input. Start must be less than or equal to End"
     return sum(n for n in range(start, end + 1) if is_prime(n))
     
-    """Calculates the sum of prime numbers within a given range.
-        start: The starting number of the range.
-        end: The ending number of the range.
-        The sum of prime numbers in the range."""
+'''This function is used to test for prime number by evaluating each number fro the given range of numbers 
+by the user'''
+  
 # Lenght unit converter
 def convert_length_units(value, direction):
     
@@ -40,26 +29,25 @@ def convert_length_units(value, direction):
     elif direction == 'M':
         return round(value * 3.28084, 2)
     
-    """ Converts length units between meters and feet.
-        value: The length value to convert.
-        direction: 'F' for feet to meters, 'M' for meters to feet.
-        The converted length value, or an error message if invalid input."""
+
+'''this function is used to convert a given value into desired units (fee,meter)
+this is used by asking the user whether they wnat to convert meter to fed or feet to meter 
+then the program will ask the value you want to convert  '''
     
 #Counsonent counter
 def tally_consonants(text):
     
     if not isinstance(text, str):
         return "Invalid input. Text must be a string."
-    vowels = "aeiouAEIOU"
+    VOWELS = "aeiouAEIOU"
     count = 0
     for char in text:
-        if char.isalpha() and char not in vowels:
+        if char.isalpha() and char not in VOWELS:
             count += 1
     return count
-    
-    """ Counts the number of consonants in a given text.
-        text: The text to analyze.
-        The number of consonants in the text."""
+    '''this function is used to count the number of consonents from a word given by the user 
+    it works by asking for an input specifically a string where by the program will evaluate the strig to check for non vowel words 
+    then the program will ignore all the vowels as givne above and count the remaining consonents'''
     
  #Finding min max number
 def min_max_finder(numbers):
@@ -69,9 +57,13 @@ def min_max_finder(numbers):
     if not numbers:
         return "List is empty"
     return min(numbers), max(numbers)
-    """ Finds the minimum and maximum numbers in a list.
-        numbers: A list of numbers.
-        A tuple containing the minimum and maximum numbers."""
+  
+  
+  
+  
+'''to find min max number this function will ask for a range of input from the user ,
+  Basically asking for how many numbers are there in the range then the program will sort out the numbers from least to greatest 
+  and rule out the extremes which are the min and max value'''
     
  #pelindrome checker
 def verify_palindrome(text):
@@ -81,9 +73,8 @@ def verify_palindrome(text):
     cleaned_text = ''.join(char.lower() for char in text if char.isalnum())
     return cleaned_text == cleaned_text[::-1]
    
-    """Finds the minimum and maximum numbers in a list.
-        numbers: A list of numbers.
-        A tuple containing the minimum and maximum numbers."""
+'''This function converts the strings given by the users by changing it into lower case letter and removing all the spaces then the program will reverse the string .
+   after that the program will compare old sstring to the new string ,if the old and the new string are equal then the program will shoot out that the given string is palindrome'''
     
  #word counter
 def word_counter(text_file_url):
@@ -92,23 +83,19 @@ def word_counter(text_file_url):
         return "Invalid input. URL must be a string."
     try:
         response = requests.get(text_file_url)
-        response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
+        response.raise_for_status() 
         text = response.text.lower()
         word_list = ["the", "was", "and"]
         word = {word: text.count(word) for word in word_list}
         return word
     except requests.exceptions.RequestException as e:
         return f"Error fetching the file: {e}"
-    
-    """Counts the occurrences of specified words in a text file from a URL.
-        text_file_url: The URL of the text file.
-        A dictionary containing the word counts, or an error message if invalid URL."""
+'''The given function will ask for the user to give URL and the program will then read the text file and regcognise the 
+    specific strings that are to be identify then the result will be the number of times the desired strings is counted'''
     
 #Main menu
 def main():
-    """
-    Main function to run the program.
-    """
+    
     while True:
         print("""
         Select a function:
@@ -129,7 +116,7 @@ def main():
                 result = prime_sum(start, end)
                 print("Sum of primes:", result)
             except ValueError:
-                print("Invalid input. Please enter integer values.")
+                print("Invalid input. Please enter between 1-7")
 
         elif choice == '2':
             try:
@@ -179,5 +166,4 @@ def main():
             print("Exit")
             break
 
-if __name__ == "__main__":
-    main()
+main()
